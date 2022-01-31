@@ -1,2 +1,2 @@
 import streamlit as st
-st.write("dnwdcd cnad cjasc hnsa cksc ascja cjnds cd cshjdhnajnajx")
+st.write("hello please join my discrd server https://discord.gg/wbXp7ZD6")
