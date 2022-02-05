@@ -53,6 +53,4 @@ st.video('https://www.youtube.com/watch?v=5DGwOJXSxqg')
 
 st.subheader("Made by SIL")
 st.subheader("Version 1.0")
-© 2022 GitHub, Inc.
-Terms
 
