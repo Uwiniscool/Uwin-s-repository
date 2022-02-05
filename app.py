@@ -53,3 +53,4 @@ st.video('https://www.youtube.com/watch?v=5DGwOJXSxqg')
 
 st.subheader("Made by SIL")
 st.subheader("Version 1.0")
+pandas==1.3.4requests==2.26.0streamlit==1.1.0
