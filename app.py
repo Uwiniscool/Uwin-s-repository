@@ -198,3 +198,4 @@ int factorial()
     printf("Factorial of entered number %d is:%d\n",num,fact);
     return 0;
 }
+
