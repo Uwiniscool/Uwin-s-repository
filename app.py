@@ -1,4 +1,4 @@
-// Calculator example using C code
+// Calculator 
 #include<stdio.h>
 #include<conio.h>
 #include<math.h>
