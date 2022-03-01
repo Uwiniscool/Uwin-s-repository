@@ -1,55 +1,200 @@
-from libraries import *
-import streamlit as st
-import base64
-
-main_bg = r"corona.png"
-main_bg_ext = "png"
-
-st.markdown(
-    f"""
-    <style>
-    .reportview-container {{
-        background: url(data:image/{main_bg_ext};base64,{base64.b64encode(open(main_bg, "rb").read()).decode()})
-    }}""",
-    unsafe_allow_html=True
-)
-
-st.title('COVID Data Visualization Dashboard')
-countries = ['Sri Lanka', 'United States', 'United Kingdom', 'Italy', 'India', 'China']
-country_code = {'Sri Lanka': 'lk', 'United States': 'us',
-                'United Kingdom': 'gb', 'China': 'cn', 'India': 'in', 'Italy': 'it'}
-data_types = ['cases', 'deaths', 'recovered']
-
-country = st.sidebar.selectbox('Select Country', countries)
-
-days = st.sidebar.slider('Select Days', min_value=1, max_value=90)
-data_type = st.sidebar.multiselect('Select data type', data_types)
-
-total_cases = get_historic_cases(country, str(days))
-total_deaths = get_historic_deaths(country, str(days))
-total_recoveries = get_historic_recoveries(country, str(days))
-total_df = pd.concat(
-    [total_cases, total_deaths, total_recoveries], axis=1).astype(int)
-
-daily_cases = get_daily_cases(country, str(days))
-daily_deaths = get_daily_deaths(country, str(days))
-daily_recoveries = get_daily_recoveries(country, str(days))
-daily_df = pd.concat(
-    [daily_cases, daily_deaths, daily_recoveries], axis=1).astype(int)
-
-yesterday_cases = get_yesterday_cases(country)
-yesterday_deaths = get_yesterday_deaths(country)
-yesterday_recoveries = get_yesterday_recoveries(country)
-
-st.metric('Selected country', country)
-st.image(f"https://flagcdn.com/80x60/{country_code[country]}.png")
-col1, col2, col3 = st.columns(3)
-col1.metric('Yesterday Cases', yesterday_cases)
-col2.metric('Yesterday Deaths', yesterday_deaths)
-col3.metric('Yesterday Recoveries', yesterday_recoveries)
-st.line_chart(daily_df[data_type])
-
-st.video('https://www.youtube.com/watch?v=5DGwOJXSxqg')
-
-st.subheader("Made by SIL")
-st.subheader("Version 1.0")
+// Calculator example using C code
+#include<stdio.h>
+#include<conio.h>
+#include<math.h>
+#include<stdlib.h>
+ 
+#define KEY "Enter the calculator Operation you want to do:"
+ 
+// Function prototype declaration
+void addition();
+void subtraction();
+void multiplication();
+void division();
+void modulus();
+void power();
+int factorial();
+void calculator_operations();
+ 
+// Start of Main Program
+int main()
+{
+    int X=1;
+    char Calc_oprn;
+ 
+    // Function call 
+    calculator_operations();
+ 
+    while(X)
+    {
+        printf("\n");
+        printf("%s : ", KEY);
+ 
+        Calc_oprn=getche();
+ 
+        switch(Calc_oprn)
+        {
+            case '+': addition();
+                      break;
+ 
+            case '-': subtraction();
+                      break;
+ 
+            case '*': multiplication();
+                      break;
+ 
+            case '/': division();
+                      break;
+ 
+            case '?': modulus();
+                      break;
+ 
+            case '!': factorial();
+                      break;
+ 
+            case '^': power();
+                      break;
+ 
+            case 'H':
+            case 'h': calculator_operations();
+                      break;
+ 
+            case 'Q':
+            case 'q': exit(0);
+                      break;
+            case 'c':
+            case 'C': system("cls");
+                      calculator_operations();
+                      break;
+ 
+            default : system("cls");
+ 
+    printf("\n**********You have entered unavailable option");
+    printf("***********\n");
+    printf("\n*****Please Enter any one of below available ");
+    printf("options****\n");
+                      calculator_operations();
+        }
+    }
+}
+ 
+//Function Definitions
+ 
+void calculator_operations()
+{
+    //system("cls");  use system function to clear 
+    //screen instead of clrscr();
+    printf("\n             Welcome to C calculator \n\n");
+ 
+    printf("******* Press 'Q' or 'q' to quit ");
+    printf("the program ********\n");
+    printf("***** Press 'H' or 'h' to display ");
+    printf("below options *****\n\n");
+    printf("Enter 'C' or 'c' to clear the screen and");
+    printf(" display available option \n\n");
+ 
+    printf("Enter + symbol for Addition \n");
+    printf("Enter - symbol for Subtraction \n");
+    printf("Enter * symbol for Multiplication \n");
+    printf("Enter / symbol for Division \n");
+    printf("Enter ? symbol for Modulus\n");
+    printf("Enter ^ symbol for Power \n");
+    printf("Enter ! symbol for Factorial \n\n");
+}
+ 
+void addition()
+{
+    int n, total=0, k=0, number;
+    printf("\nEnter the number of elements you want to add:");
+    scanf("%d",&n);
+    printf("Please enter %d numbers one by one: \n",n);
+    while(k<n)
+    { 
+        scanf("%d",&number);
+        total=total+number;
+        k=k+1;
+    }
+    printf("Sum of %d numbers = %d \n",n,total);
+}
+ 
+void subtraction()
+{ 
+    int a, b, c = 0; 
+    printf("\nPlease enter first number  : "); 
+    scanf("%d", &a); 
+    printf("Please enter second number : "); 
+    scanf("%d", &b); 
+    c = a - b; 
+    printf("\n%d - %d = %d\n", a, b, c); 
+}
+ 
+void multiplication()
+{
+    int a, b, mul=0; 
+    printf("\nPlease enter first numb   : "); 
+    scanf("%d", &a); 
+    printf("Please enter second number: "); 
+    scanf("%d", &b);
+    mul=a*b;
+    printf("\nMultiplication of entered numbers = %d\n",mul);
+}
+ 
+void division()
+{
+    int a, b, d=0; 
+    printf("\nPlease enter first number  : "); 
+    scanf("%d", &a); 
+    printf("Please enter second number : "); 
+    scanf("%d", &b);
+    d=a/b;
+    printf("\nDivision of entered numbers=%d\n",d);
+}
+ 
+void modulus()
+{
+    int a, b, d=0; 
+    printf("\nPlease enter first number   : "); 
+    scanf("%d", &a); 
+    printf("Please enter second number  : "); 
+    scanf("%d", &b);
+    d=a%b;
+    printf("\nModulus of entered numbers = %d\n",d);
+}
+ 
+void power()
+{
+    double a,num, p;
+    printf("\nEnter two numbers to find the power \n");
+    printf("number: ");
+    scanf("%lf",&a);
+ 
+    printf("power : ");
+    scanf("%lf",&num);
+ 
+    p=pow(a,num);
+ 
+    printf("\n%lf to the power %lf = %lf \n",a,num,p);
+}
+ 
+int factorial()
+{
+    int i,fact=1,num;
+ 
+    printf("\nEnter a number to find factorial : ");
+    scanf("%d",&num);
+ 
+    if (num<0)
+    {
+        printf("\nPlease enter a positive number to");
+        printf(" find factorial and try again. \n");
+        printf("\nFactorial can't be found for negative");
+        printf(" values. It can be only positive or 0  \n");
+        return 1;
+    }               
+ 
+    for(i=1;i<=num;i++)
+    fact=fact*i;
+    printf("\n");
+    printf("Factorial of entered number %d is:%d\n",num,fact);
+    return 0;
+}
